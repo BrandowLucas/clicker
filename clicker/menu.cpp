@@ -451,7 +451,11 @@ void c_menu::ResetDevice()
 	if (hr == D3DERR_INVALIDCALL)
 		IM_ASSERT(0);
 
-	ImGui_ImplDX9_CreateDeviceObjects();
+	if ( !ImGui_ImplDX9_CreateDeviceObjects() )
+	{
+	 return;
+	 //can fail on wine
+	}
 }
 
 void c_menu::destroy()
@@ -591,6 +595,17 @@ bool c_menu::setup()
 
 	ImGui_ImplWin32_Init(ctx::hWnd);
 	ImGui_ImplDX9_Init( directx9::device );
+
+	if ( !ImGui_ImplDX9_CreateDeviceObjects() )
+	{
+		ImGui_ImplDX9_Shutdown();
+		ImGui_ImplWin32_Shutdown();
+		ImGui::DestroyContext();
+		CleanupDeviceD3D();
+		DestroyWindow( ctx::hWnd );
+		UnregisterClass( ctx::wc.lpszClassName, ctx::wc.hInstance );
+		return false;
+	}
 
 	return true;
 }

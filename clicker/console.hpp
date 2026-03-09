@@ -1,6 +1,7 @@
 #pragma once
 
 #include <shared_mutex>
+#include <mutex>
 
 enum class msg_type_t: std::uint32_t
 {
@@ -35,7 +36,7 @@ public:
 		AttachConsole( GetCurrentProcessId() );
 
 		if ( !title_name.empty() )
-			SetConsoleTitle( title_name.data() );
+			SetConsoleTitleW( title_name.data() );
 
 		FILE* conin, * conout;
 
@@ -46,7 +47,7 @@ public:
 
 	~logger()
 	{
-		const auto handle = FindWindow( L"ConsoleWindowClass", nullptr );
+		const auto handle = FindWindowW( L"ConsoleWindowClass", nullptr );
 		ShowWindow( handle, SW_HIDE );
 		FreeConsole();
 	}

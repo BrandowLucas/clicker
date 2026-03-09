@@ -2,12 +2,16 @@
 
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
+#define UNICODE
+#define _UNICODE
 
 #include <iostream>
 #include <thread>
 #include <random>
+#include <algorithm>
+#include <filesystem>
 
-#include <Windows.h>
+#include <windows.h>
 
 using namespace std::chrono_literals;
 

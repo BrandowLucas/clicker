@@ -4,14 +4,11 @@ Tested on Forge, Vanilla, Lunar and Badlion. 1.8.9 and 1.7.10.
 
 ![image](https://b.catgirlsare.sexy/JfRVFDUWAG19.png)
 
-# Getting started
+# Run on wine
 
-## Download
-Download the latest release at the [releases section](https://github.com/b1scoito/clicker/releases/latest).
+## Install the necessary fonts into your wine prefix, e.g:
 
-### Other ways of downloading
-For advanced users, search for a binary that downloads a file and keeps that file pretty hidden on the filesystem.
-- https://lolbas-project.github.io/#/download
+`cp segoeui.ttf ~/.wine/drive_c/windows/Fonts`
 
 ## Bugs or suggestions
 Bugs or suggestions should be reported at the [issues section](https://github.com/b1scoito/clicker/issues).

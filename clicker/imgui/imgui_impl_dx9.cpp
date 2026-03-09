@@ -149,6 +149,12 @@ void ImGui_ImplDX9_RenderDrawData(ImDrawData* draw_data)
 
     // Create and grow buffers if needed
     ImGui_ImplDX9_Data* bd = ImGui_ImplDX9_GetBackendData();
+    if (!bd || !bd->pd3dDevice)
+        return;
+
+    // Ensure font texture was created
+    if (!bd->FontTexture)
+        return;
     if (!bd->pVB || bd->VertexBufferSize < draw_data->TotalVtxCount)
     {
         if (bd->pVB) { bd->pVB->Release(); bd->pVB = NULL; }
